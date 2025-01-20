@@ -11,21 +11,17 @@ const Insert=()=>{
         setInput(values=>({...values,[name]:value}));
         console.log(input)
     }
-
     const handleImage=(e)=>{
         console.log(e.target.files[0])
         setUploadImage(e.target.files[0])
     }
-
     const handleSubmit=async()=>{
         const formData=new FormData();
         formData.append("file", uploadImage);
         formData.append("upload_preset", "myimage");
         formData.append('cloud_name', 'dtwwlicj1');
-    
         const response = await axios.post('https://api.cloudinary.com/v1_1/dtwwlicj1/image/upload', formData); 
         console.log(response.data.url);
-
         let api="http://localhost:8000/user/datasave";
         // await axios.post(api,{imgname:response.data.url,...input}).then((res)=>{
         //     console.log(res.data)
@@ -34,7 +30,6 @@ const Insert=()=>{
         const res1=await axios.post(api,{imgname:response.data.url,...input});
         alert("Data successfully save")
     }
-
     return (
       <div className="form-container">
           <Form className="form-box">
@@ -49,7 +44,6 @@ const Insert=()=>{
                       className="inputsize" 
                   />
               </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control 
@@ -61,7 +55,6 @@ const Insert=()=>{
                       className="inputsize" 
                   />
               </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicCity">
                   <Form.Label>City</Form.Label>
                   <Form.Control 
@@ -73,7 +66,6 @@ const Insert=()=>{
                       className="inputsize" 
                   />
               </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicFees">
                   <Form.Label>Fees</Form.Label>
                   <Form.Control 
@@ -85,7 +77,6 @@ const Insert=()=>{
                       className="inputsize" 
                   />
               </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicFile">
                   <Form.Label>Upload File</Form.Label>
                   <Form.Control 
@@ -95,7 +86,6 @@ const Insert=()=>{
                       className="inputsize" 
                   />
               </Form.Group>
-
               <Button variant="primary" type="button" onClick={handleSubmit}>
                   Submit
               </Button>
