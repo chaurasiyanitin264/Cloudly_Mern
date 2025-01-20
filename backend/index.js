@@ -5,8 +5,6 @@ const bodyparser=require("body-parser");
 const mongoose=require("mongoose");
 const StuRoute=require("../backend/routes/stuRoutes")
 
-
-
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
